@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_07_001915) do
+ActiveRecord::Schema.define(version: 2019_07_07_011510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "acts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "contact_name", null: false
+    t.string "contact_email", null: false
+    t.text "description"
+    t.boolean "archived", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.integer "duration", null: false
+    t.bigint "show_id", null: false
+    t.bigint "act_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["act_id"], name: "index_assignments_on_act_id"
+    t.index ["show_id"], name: "index_assignments_on_show_id"
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "start_time", null: false
+    t.integer "duration", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
