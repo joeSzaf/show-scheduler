@@ -14,6 +14,10 @@ class Api::V1::ShowsController < ApiController
     end
   end
 
+  def show
+    render json: Show.find(params[:id])
+  end
+
   def show_params
     params.require(:show).permit(:name, :start_time, :duration, :description)
   end
