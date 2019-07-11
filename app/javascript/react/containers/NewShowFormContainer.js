@@ -23,7 +23,6 @@ class NewShowFormContainer extends React.Component {
   }
 
   addNewShow(formPayload){
-    debugger
     fetch("/api/v1/shows",{
       credentials: 'same-origin',
       method: 'POST',
