@@ -37,7 +37,7 @@ class ShowContainer extends Component {
 
     let shows = this.state.shows.map(show => {
           return(
-            <li key= { show.id }>{ show.name }</li>
+            <li key= { show.id }><a href={`/shows/${show.id}`}>{ show.name }</a></li>
           )
         })
 

@@ -1,4 +1,5 @@
 class Api::V1::ShowsController < ApiController
+  respond_to :json
 
   def index
     render json: { spaces: serialized_shows }
@@ -16,6 +17,12 @@ class Api::V1::ShowsController < ApiController
 
   def show
     render json: Show.find(params[:id])
+  end
+
+  def update
+    show = Show.find(params['id'])
+    show.update(show_params)
+    respond_with Show, json: show
   end
 
   def show_params
