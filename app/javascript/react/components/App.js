@@ -4,6 +4,7 @@ import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 import ShowContainer from '../containers/ShowContainer'
 import NewShowFormContainer from '../containers/NewShowFormContainer'
 import ShowShowContainer from '../containers/ShowShowContainer'
+import ActShowContainer from '../containers/ActShowContainer'
 import ActContainer from '../containers/ActContainer'
 
 
@@ -16,7 +17,7 @@ export const App = props => {
         <Route path='/shows/:id' component={ShowShowContainer} />
         <Route path='/acts' component={ActContainer} />
         <Route path='/acts/new' component={NewShowFormContainer} />
-        <Route path='/acts/:id' component={ShowShowContainer} />
+        <Route path='/acts/:id' component={ActShowContainer} />
       </Router>
     </div>
   )
