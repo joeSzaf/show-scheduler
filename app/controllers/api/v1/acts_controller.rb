@@ -22,7 +22,7 @@ class Api::V1::ActsController < ApiController
   def update
     act = Act.find(params['id'])
     act.update(act_params)
-    respond_with Act, json: show
+    respond_with Act, json: act
   end
 
   def act_params
