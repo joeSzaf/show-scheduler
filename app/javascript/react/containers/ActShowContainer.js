@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Router, browserHistory, Route, IndexRoute } from 'react-router'
 
 import TextField from '../components/TextField'
+import CheckBox from '../components/CheckBox'
 
 class ActShowContainer extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class ActShowContainer extends Component {
       contact_name: "",
       contact_email: "",
       description: "",
-      archived: "",
+      archived: false,
       errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
@@ -22,7 +23,12 @@ class ActShowContainer extends Component {
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value })
+    debugger
+    if (event.target.type === "checkbox") {
+      this.setState({ [event.target.name]: event.target.checked })
+    } else {
+      this.setState({ [event.target.name]: event.target.value })
+    }
   }
 
   updateAct(formPayload){
@@ -136,6 +142,12 @@ class ActShowContainer extends Component {
             name="description"
             content={this.state.description}
             label="Description:"
+            handleChangeMethod={this.handleChange}
+          />
+        <CheckBox
+            name="archived"
+            checked={this.state.archived}
+            label="Archived?:"
             handleChangeMethod={this.handleChange}
           />
 
